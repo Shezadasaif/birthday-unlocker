@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Unlocker</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f44369, #ffccbc);
+      color: #333;
+      overflow-x: hidden;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 20px;
+    }
+    h2, h1 {
+      font-family: 'Pacifico', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    #unlock-section {
+      display: block;
+    }
+    #message-section {
+      display: none;
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 8px 20px rgba(244, 67, 105, 0.4);
+    }
+    .cake-img {
+      width: 220px;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: transform 0.4s ease, filter 0.3s ease;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+      border-radius: 20px;
+    }
+    .cake-img:hover {
+      transform: scale(1.15) rotate(-5deg);
+      filter: drop-shadow(0 8px 10px rgba(255, 64, 129, 0.7));
+    }
+    .next-btn {
+      margin-top: 30px;
+      padding: 14px 30px;
+      font-size: 20px;
+      border: none;
+      background: #ff4081;
+      color: white;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255,64,129,0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 700;
+      font-family: 'Roboto', sans-serif;
+    }
+    .next-btn:hover {
+      background: #e040fb;
+      box-shadow: 0 8px 25px rgba(224,64,251,0.7);
+    }
+    #letter-section {
+      display: none;
+      background: url('https://i.ibb.co/tbzXpQB/night-garden.jpg') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      padding: 50px 40px;
+      text-shadow: 2px 2px 5px black;
+      position: relative;
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    #jugnu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .firefly {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #fff700;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation-name: blink;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      box-shadow: 0 0 8px 3px #fff700;
+      z-index: 2;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    .boy-sign {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .board-msg {
+      background: #fff;
+      color: #ff4081;
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-family: 'Pacifico', cursive;
+      box-shadow: 0 6px 20px rgba(255,64,129,0.4);
+      max-width: 300px;
+      text-align: center;
+    }
+    .spotify-embed {
+      margin-top: 25px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(255,64,129,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔐 Unlock Section -->
+  <div id="unlock-section" class="center">
+    <h2>Say "Happy Birthday Shafaque" to unlock 🎤</h2>
+    <button onclick="startRecognition()" class="next-btn">Start Voice</button>
+  </div>
+
+  <!-- 🎂 Message Section -->
+  <div id="message-section">
+    <h1>🎉 Happy Birthday Shafaque 🎉</h1>
+    <p>You are the sweetest blessing 💖</p>
+    
+    <!-- 🎂 Cake Image (Click to play music) -->
+    <img src="images/cake.png" alt="Cake" class="cake-img" onclick="playSong()" />
+
+    <!-- 🔊 Spotify Embed -->
+    <div class="spotify-embed">
+      <iframe 
+        src="https://open.spotify.com/embed/track/2B4Lg50Qvg7bTWt94SrdBc?utm_source=generator" 
+        width="100%" height="80" frameborder="0" allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy"></iframe>
+    </div>
+
+    <div class="boy-sign">
+      <img src="https://i.ibb.co/Y2LXjYx/cute-boy.png" alt="Boy" width="100" />
+      <div class="board-msg">Wishing you a day full of smiles & surprises!</div>
+    </div>
+
+    <button class="next-btn" onclick="showLetter()">Next</button>
+  </div>
+
+  <!-- 💌 Letter Section -->
+  <div id="letter-section">
+    <div id="jugnu"></div>
+    <h2>Dear Shafaque,</h2>
+    <p>
+      Happy Birthday my dear. Today is very special for both of us.<br />
+      May Allah remove all your problems and fill your life with so much happiness that sadness forgets your name.<br />
+      Always keep smiling. Allah bless you, once again Happy Birthday dear.
+    </p>
+  </div>
+
+  <!-- 🔊 Background Music (hidden) -->
+  <audio id="bg-music">
+    <source src="music/song.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 👨‍💻 JavaScript Section -->
+  <script>
+    const unlockSection = document.getElementById('unlock-section');
+    const messageSection = document.getElementById('message-section');
+    const letterSection = document.getElementById('letter-section');
+
+    function startRecognition() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.onresult = function(event) {
+        const result = event.results[0][0].transcript.toLowerCase();
+        if (result.includes("happy birthday shafaque")) {
+          unlockSection.style.display = 'none';
+          messageSection.style.display = 'block';
+        } else {
+          alert("Try saying: Happy Birthday Shafaque");
+        }
+      };
+      recognition.start();
+    }
+
+    function playSong() {
+      const music = document.getElementById("bg-music");
+      music.play();
+    }
+
+    function showLetter() {
+      messageSection.style.display = 'none';
+      letterSection.style.display = 'block';
+      spawnFireflies();
+    }
+
+    function spawnFireflies() {
+      const jugnu = document.getElementById('jugnu');
+      for (let i = 0; i < 20; i++) {
+        const firefly = document.createElement('div');
+        firefly.classList.add('firefly');
+        firefly.style.top = Math.random() * 100 + '%';
+        firefly.style.left = Math.random() * 100 + '%';
+        // Random animation duration and delay for natural effect
+        firefly.style.animationDuration = (2 + Math.random() * 3) + 's';
+        firefly.style.animationDelay = (Math.random() * 3) + 's';
+        jugnu.appendChild(firefly);
+      }
+    }
+  </script>
+</body>
+</html>
+s
